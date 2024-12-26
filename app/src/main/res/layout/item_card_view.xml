@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="pos"
+            type="Integer" />
+
+        <variable
+            name="model"
+            type="com.ehaque.models.CardModel" />
+
+        <variable
+            name="callback"
+            type="com.ehaque.ui.groupie.BindableItemCardView.OnItemClickListener" />
+
+        <variable
+            name="callbackChild"
+            type="com.ehaque.ui.groupie.BindableItemCardView.OnChildItemClickListener" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pokerViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
+        android:layout_margin="@dimen/_10sdp"
+        android:visibility="@{model.hide?View.INVISIBLE:View.VISIBLE}"
+        app:childItemCallback="@{callbackChild}"
+        app:position="@{pos}"
+        app:setUpViewPager="@{model}" />
+
+</layout>

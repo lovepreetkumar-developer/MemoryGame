@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="pos"
+            type="Integer" />
+
+        <variable
+            name="model"
+            type="com.ehaque.models.ConfigurationModel" />
+
+        <variable
+            name="callback"
+            type="com.ehaque.ui.groupie.BindableItemConfiguration.OnItemClickListener" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{(v)->callback.onItemClick(v,model,pos)}"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardElevation="@dimen/_5sdp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/CustomTextViewSemiBold"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/_10sdp"
+            android:text="@{model.title}"
+            android:textColor="@color/color_black"
+            tools:text="4 Cards Play" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

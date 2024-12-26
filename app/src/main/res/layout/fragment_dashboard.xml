@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="callback"
+            type="com.ehaque.ui.base.BaseCallback" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            app:callback="@{callback}" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="@dimen/_5sdp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvWon"
+                        style="@style/CustomTextViewSemiBold"
+                        android:layout_centerVertical="true"
+                        android:text="@string/success_0"
+                        android:textColor="@color/color_green" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFailures"
+                        style="@style/CustomTextViewSemiBold"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/failures_0"
+                        android:textColor="@color/color_red" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCards"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_card_view" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabStartGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:layout_marginBottom="@dimen/_40sdp"
+            android:contentDescription="@string/new_game"
+            android:onClick="@{(v)->callback.onClick(v)}"
+            android:src="@drawable/ic_add"
+            android:visibility="gone"
+            app:fabSize="normal"
+            app:tint="@android:color/white"
+            tools:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvGameFinished"
+            style="@style/CustomTextViewRegular"
+            android:layout_centerInParent="true"
+            android:text="@string/game_finished"
+            android:textColor="@color/color_green"
+            android:textSize="@dimen/_30sdp"
+            android:visibility="gone"
+            tools:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnNewGame"
+            style="@style/CustomButton"
+            android:layout_below="@+id/tvGameFinished"
+            android:layout_margin="@dimen/_20sdp"
+            android:background="@drawable/bg_round_filled_green_25sdp"
+            android:onClick="@{(v)->callback.onClick(v)}"
+            android:text="@string/new_game"
+            android:textAllCaps="true"
+            android:textColor="@color/color_white"
+            android:visibility="gone"
+            tools:visibility="gone" />
+
+    </RelativeLayout>
+
+</layout>
